@@ -5,21 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Win with Baba Sai Kripa Co-Operative (Urban) T&C Society</title>
     <style>
+        /* Import Google Noto Sans font */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+
         body {
             text-align: center;
             font-family: Arial, sans-serif;
             background-color: #eef797; /* Changed background color */
             margin: 0;
             padding: 0;
+            height: 100vh;
         }
         #logo {
-            margin-top: 60px;
+            margin-top: 5px;
             width: 200px;
             /* Removed box shadow */
         }
         #welcome {
-            font-size: 34px;
-            margin-top: 60px;
+            font-size: 60px;
+            margin-top: 10px;
+            color: #210099;
+        }
+        #Yojna {
+            font-size: 50px;
+            margin-top: 0px;
             color: #210099;
         }
         #clickButton {
@@ -32,8 +41,8 @@
             cursor: pointer;
         }
         #result {
-            font-size: 34px;
-            margin-top: 20px;
+            font-size: 55px;
+            margin-top: 10px;
         }
         /* Modal Styles */
         #modal {
@@ -42,6 +51,7 @@
             z-index: 1000;
             left: 0;
             top: 0;
+            font-size: 40px;
             width: 100%;
             height: 100%;
             overflow: auto;
@@ -49,17 +59,18 @@
         }
         #modal-content {
             background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
+            margin: 5% auto;
+            padding: 10px;
             border: 1px solid #888;
-            width: 60%; /* Adjusted width */
+            width: 40%; /* Adjusted width */
             max-width: 600px; /* Optional: Max width */
             border-radius: 10px; /* Optional: Rounded corners */
+            text-align: center;
         }
         #close {
             color: #aaa;
             float: right;
-            font-size: 28px;
+            font-size: 58px;
             font-weight: bold;
         }
         #close:hover,
@@ -77,20 +88,28 @@
             height: 100%;
             pointer-events: none;
         }
+        /* Apply Noto Sans font to specific text elements */
+        .noto-sans {
+            font-family: 'Noto Sans', sans-serif;
+        }
+        /* Smaller font size for Hindi text in modal */
+        #modal-text .hindi-text {
+            font-size: 18px; /* Reduced font size for Hindi text */
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@latest/dist/confetti.browser.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fireworks-js@latest/dist/fireworks.min.js"></script>
 </head>
 <body>
-
+    <div id="welcome"><b>Welcome to Baba Sai Kripa Co-Operative (Urban) T&C Society Limited !</b></div> 
     <img id="logo" src="https://github.com/bskcs/Win-Prize/blob/main/BSK%20LOGO.png?raw=true" alt="Baba Sai Kripa Logo">
-    <div id="welcome">Welcome to Baba Sai Kripa Co-Operative (Urban) T&C Society Limited!</div>
-
-    <div style="font-family: Arial, sans-serif; padding: 20px; border: none; background-color: transparent; margin-top: 20px;">
-        <h2>प्रिय सदस्य,</h2>
-        <p>आपका धन्यवाद! आपने हमारी सोसाइटी में एक नया सदस्य जोड़ा है, इसके लिए हम आपके आभारी हैं। आपके लिए ₹200 से ₹1100 तक की प्रोत्साहन राशि तैयार है। इनाम पाने के लिए नीचे दिए गए बटन पर क्लिक करें।</p>
+    <div id="Yojna"><b>सदस्य प्रोत्साहन योजना 2024 गणेश चतुर्थी से दीपावली तक</b></div>
+    
+    <div class="noto-sans" style="padding: 5px; border: none; background-color: transparent; margin-top: 5px;">
+        <h2>प्रिय सदस्य, आपका धन्यवाद।</h2>
+        <p><b>आपने हमारी सोसाइटी में एक नया सदस्य जोड़ा है, इसके लिए हम आपके आभारी हैं। आपके लिए ₹200 से ₹1100 तक की प्रोत्साहन राशि तैयार है। इनाम पाने के लिए नीचे दिए गए बटन पर क्लिक करें।</b></p>
         
-        <p style="margin-top: 20px;">कृपया और सदस्य लाएं और हर सदस्य पर ₹200 से ₹1100 तक की प्रोत्साहन राशि पाएं!</p>
+        <p style="margin-top: 5px;">कृपया और सदस्य लाएं और हर सदस्य पर ₹200 से ₹1100 तक की प्रोत्साहन राशि पाएं।</p>
     </div>
 
     <button id="clickButton" onclick="generateReward()">Click here to win</button>
@@ -101,7 +120,10 @@
     <div id="modal">
         <div id="modal-content">
             <span id="close">&times;</span>
-            <p id="modal-text"></p>
+            <p id="modal-text">
+                Congratulations! <br>You won <br>₹{reward}.00 🎉<br>
+                <span class="hindi-text">मैंने बाबा साईं कृपा सोसायटी में सदस्य जोड़कर नकद इनाम जीता है। आप भी आज ही सदस्य जोड़ें और योजना का लाभ उठाएं। और पाएं  ₹200 से ₹1100 जीतने का मौका । </span>
+            </p>
         </div>
     </div>
 
@@ -113,6 +135,7 @@
 
     <script>
         function generateReward() {
+            console.log("Button clicked"); // Debugging line
             // Disable button after first click
             document.getElementById('clickButton').disabled = true;
             
@@ -120,19 +143,19 @@
             let reward;
             let randomNum = Math.random();
             
-            // 95-97% chance of getting a prize below 300
+            // 95-97% chance of getting a prize below 400
             if (randomNum <= 0.97) {
-                reward = Math.floor(Math.random() * 100) + 201; // Between 201 and 300
+                reward = Math.floor(Math.random() * 100) + 201; // Between 201 and 400
             } else {
-                reward = Math.floor(Math.random() * 800) + 301; // Between 301 and 1100
+                reward = Math.floor(Math.random() * 800) + 401; // Between 401 and 1100
             }
 
             // Display result
-            document.getElementById('result').innerHTML = `Congratulations! You won ₹${reward}! 🎉`;
+            document.getElementById('result').innerHTML = `Congratulations! You won ₹${reward}.00 🎉`;
             document.getElementById('result').classList.remove('hidden');
 
             // Show modal with amount
-            document.getElementById('modal-text').innerText = `Congratulations! You won ₹${reward}! 🎉`;
+            document.getElementById('modal-text').innerHTML = `Congratulations! <br>You won <br>₹${reward}.00 🎉<br> <span class="hindi-text">मैंने बाबा साईं कृपा सोसायटी में सदस्य जोड़कर नकद इनाम जीता है। आप भी आज ही सदस्य जोड़ें और योजना का लाभ उठाएं।  और पाएं  ₹200 से ₹1100 जीतने का मौका ।</span>`;
             document.getElementById('modal').style.display = 'block';
 
             // Trigger confetti effect
@@ -192,6 +215,5 @@
             });
         });
     </script>
-
 </body>
 </html>
