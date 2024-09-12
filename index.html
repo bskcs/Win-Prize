@@ -11,7 +11,7 @@
         body {
             text-align: center;
             font-family: Arial, sans-serif;
-            background-color: #eef797; /* Changed background color */
+            background-color: #eef797;
             margin: 0;
             padding: 0;
             height: 100vh;
@@ -20,17 +20,17 @@
 
         #logo {
             margin-top: 5px;
-            width: 150px; /* Adjusted width */
+            width: 150px;
         }
 
         #welcome {
-            font-size: 4rem; /* Adjusted font size */
+            font-size: 4rem;
             margin-top: 10px;
             color: #210099;
         }
 
         #Yojna {
-            font-size: 2.5rem; /* Adjusted font size */
+            font-size: 2.5rem;
             margin-top: 0px;
             color: #210099;
         }
@@ -41,18 +41,18 @@
             color: white;
             border: none;
             border-radius: 5px;
-            font-size: 1.2rem; /* Adjusted font size */
+            font-size: 1.2rem;
             cursor: pointer;
         }
 
         #result {
-            font-size: 4rem; /* Increased font size for larger result text */
+            font-size: 4rem;
             margin-top: 10px;
         }
 
         /* Modal Styles */
-        #modal {
-            display: none; /* Hidden by default */
+        #modal, #terms-modal {
+            display: none;
             position: fixed;
             z-index: 1000;
             left: 0;
@@ -60,29 +60,28 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0,0,0,0.4); /* Black background with opacity */
-        }
+            background-color: rgba(0,0,0,0.4);
+                 
 
-        #modal-content {
+        #modal-content, #terms-modal-content {
             background-color: #fefefe;
             margin: 10% auto;
             padding: 10px;
             border: 1px solid #888;
-            width: 80%; /* Adjusted width for responsiveness */
-            max-width: 800px; /* Optional: Max width */
-            border-radius: 10px; /* Optional: Rounded corners */
+            width: 80%;
+            max-width: 800px;
+            border-radius: 10px;
             text-align: center;
         }
 
-        #close {
+        #close, #terms-close {
             color: #aaa;
             float: right;
-            font-size: 2rem; /* Adjusted font size */
+            font-size: 2rem;
             font-weight: bold;
         }
 
-        #close:hover,
-        #close:focus {
+        #close:hover, #close:focus, #terms-close:hover, #terms-close:focus {
             color: black;
             text-decoration: none;
             cursor: pointer;
@@ -103,114 +102,40 @@
             font-family: 'Noto Sans', sans-serif;
         }
 
-        /* Larger font size for the congratulatory text in modal */
-        #modal-text {
-            font-size: 3rem; /* Increased font size for modal text */
-        }
-
-        #modal-text .hindi-text {
-            font-size: 1.2rem; /* Adjusted font size for Hindi text */
-        }
-
-        /* Share options styles */
-        #share-options {
-            display: none; /* Hidden by default */
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        #share-options button {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            margin: 5px;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-            outline: none;
-        }
-
-        #share-options button.disabled {
-            background-color: #6c757d;
-            cursor: not-allowed;
-        }
-
         /* Responsive Design */
         @media (max-width: 768px) {
-            #welcome {
-                font-size: 2.5rem; /* Adjusted font size for mobile */
-            }
-
-            #Yojna {
-                font-size: 1.5rem; /* Adjusted font size for mobile */
-            }
-
-            #clickButton {
-                padding: 10px 20px;
-                font-size: 1rem; /* Adjusted font size for mobile */
-            }
-
-            #result {
-                font-size: 2.5rem; /* Adjusted font size for mobile */
-            }
-
-            #modal-content {
-                width: 90%; /* Adjusted width for mobile */
-            }
-
-            #close {
-                font-size: 1.5rem; /* Adjusted font size for mobile */
-            }
-
-            #modal-text {
-                font-size: 2rem; /* Adjusted font size for mobile */
-            }
-
-            #modal-text .hindi-text {
-                font-size: 1rem; /* Adjusted font size for Hindi text on mobile */
-            }
+            #welcome { font-size: 2.5rem; }
+            #Yojna { font-size: 1.5rem; }
+            #clickButton { padding: 10px 20px; font-size: 1rem; }
+            #result { font-size: 2.5rem; }
+            #modal-content, #terms-modal-content { width: 90%; }
+            #close, #terms-close { font-size: 1.5rem; }
         }
 
         @media (max-width: 480px) {
-            #welcome {
-                font-size: 1.5rem; /* Further adjusted font size for small screens */
-            }
-
-            #Yojna {
-                font-size: 1.2rem; /* Further adjusted font size for small screens */
-            }
-
-            #clickButton {
-                padding: 8px 15px;
-                font-size: 0.9rem; /* Further adjusted font size for small screens */
-            }
-
-            #result {
-                font-size: 1.5rem; /* Further adjusted font size for small screens */
-            }
-
-            #modal-content {
-                width: 95%; /* Further adjusted width for small screens */
-            }
-
-            #close {
-                font-size: 1.2rem; /* Further adjusted font size for small screens */
-            }
-
-            #modal-text {
-                font-size: 1.5rem; /* Further adjusted font size for small screens */
-            }
-
-            #modal-text .hindi-text {
-                font-size: 0.8rem; /* Further reduced font size for Hindi text on small screens */
-            }
+            #welcome { font-size: 1.5rem; }
+            #Yojna { font-size: 1.2rem; }
+            #clickButton { padding: 8px 15px; font-size: 0.9rem; }
+            #result { font-size: 1.5rem; }
+            #modal-content, #terms-modal-content { width: 95%; }
+            #close, #terms-close { font-size: 1.2rem; }
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@latest/dist/confetti.browser.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fireworks-js@latest/dist/fireworks.min.js"></script>
 </head>
 <body>
+    <!-- Terms and Conditions Modal -->
+    <div id="terms-modal">
+        <div id="terms-modal-content">
+            <span id="terms-close">&times;</span>
+            <h2>Terms & Conditions</h2>
+            <p>Please share this winning message on your social media platforms within the next 24 hours, take a screenshot, and then payment will be received via UPI.</p>
+            <button id="accept-terms">Accept & Start Game</button>
+        </div>
+    </div>
+
+    <!-- Game Page Content -->
     <div id="welcome"><b>Welcome to Baba Sai Kripa Co-Operative (Urban) T&C Society Limited!</b></div> 
     <img id="logo" src="https://github.com/bskcs/Win-Prize/blob/main/BSK%20LOGO.png?raw=true" alt="Baba Sai Kripa Logo">
     <div id="Yojna"><b>सदस्य प्रोत्साहन योजना 2024 गणेश चतुर्थी से दीपावली तक</b></div>
@@ -218,7 +143,6 @@
     <div class="noto-sans" style="padding: 5px; border: none; background-color: transparent; margin-top: 5px;">
         <h2>प्रिय सदस्य, आपका धन्यवाद।</h2>
         <p><b>आपने हमारी सोसाइटी में एक नया सदस्य जोड़ा है, इसके लिए हम आपके आभारी हैं। आपके लिए ₹200 से ₹1100 तक की प्रोत्साहन राशि तैयार है। इनाम पाने के लिए नीचे दिए गए बटन पर क्लिक करें।</b></p>
-        
         <p style="margin-top: 5px;">कृपया और सदस्य लाएं और हर सदस्य पर ₹200 से ₹1100 तक की प्रोत्साहन राशि पाएं।</p>
     </div>
 
@@ -230,140 +154,90 @@
     <div id="modal">
         <div id="modal-content">
             <span id="close">&times;</span>
-            <p id="modal-text">
-                Congratulations! <br>You won <br>₹{reward}.00 🎉<br>
-                <span class="hindi-text">मैंने बाबा साईं कृपा सोसायटी में सदस्य जोड़कर नकद इनाम जीता है। आप भी आज ही सदस्य जोड़ें और योजना का लाभ उठाएं। और पाएं ₹200 से ₹1100 जीतने का मौका।</span>
-            </p>
-            <!-- Share button and options -->
-            <button id="share-button" class="disabled" onclick="enableShareButton()">Share Your Win</button>
-            <div id="share-options">
-                <button class="social-btn" id="whatsapp-share">Share on WhatsApp</button>
-                <button class="social-btn" id="facebook-share">Share on Facebook</button>
-                <button class="social-btn" id="twitter-share">Share on Twitter</button>
+            <div id="modal-text" class="noto-sans">
+                <h2>बधाई हो! आपने ₹<span id="reward-amount"></span> जीते हैं!</h2>
+                <h3>कृपया 24 घंटे के अंदर अपने सोशल मीडिया प्लेटफार्म पर यह जीत का संदेश साझा करें।</h3>
             </div>
+            <button id="shareWhatsApp">Share on WhatsApp</button>
+            <button id="shareFacebook">Share on Facebook</button>
+            <button id="shareInstagram">Share on Instagram</button>
         </div>
     </div>
 
     <!-- Fireworks container -->
     <div id="fireworks-container"></div>
 
-    <!-- Background Music -->
-    <audio id="background-music" src="https://github.com/bskcs/Win-Prize/blob/main/Cheer.mp3?raw=true" preload="auto" loop></audio>
-
     <script>
-        let rewardAmount = 0;
+	let clickCounter = 0; // Add a counter to keep track of clicks
+        // Show the Terms & Conditions modal first
+        document.getElementById('terms-modal').style.display = 'block';
+
+        // Close Terms & Conditions modal
+        document.getElementById('terms-close').onclick = function() {
+            document.getElementById('terms-modal').style.display = 'none';
+        };
+
+        // Accept Terms & Conditions and start the game
+        document.getElementById('accept-terms').onclick = function() {
+            document.getElementById('terms-modal').style.display = 'none';
+        };
 
         function generateReward() {
-            console.log("Button clicked"); // Debugging line
-            // Disable button after first click
-            document.getElementById('clickButton').disabled = true;
-            
-            // Random reward logic
-            let randomNum = Math.random();
-            
-            // 95-97% chance of getting a prize below 400
-            if (randomNum <= 0.97) {
-                rewardAmount = Math.floor(Math.random() * 100) + 201; // Between 201 and 400
-            } else {
-                rewardAmount = Math.floor(Math.random() * 800) + 401; // Between 401 and 1100
-            }
+    var min1 = 201, max1 = 501; // Range for 97% probability
+    var min2 = 502, max2 = 1100; // Range for 3% probability
+    var randomChance = Math.random() * 100; // Generates a number between 0 and 100
+    var reward;
 
-            // Display result
-            document.getElementById('result').innerHTML = `Congratulations! You won ₹${rewardAmount}.00 🎉`;
-            document.getElementById('result').classList.remove('hidden');
+    // 97% chance to fall between ₹201 and ₹501
+    if (randomChance <= 97) {
+        reward = Math.floor(Math.random() * (max1 - min1 + 1)) + min1;
+    } else {
+        // 3% chance to fall between ₹502 and ₹1100
+        reward = Math.floor(Math.random() * (max2 - min2 + 1)) + min2;
+    }
 
-            // Show modal with amount
-            document.getElementById('modal-text').innerHTML = `Congratulations! <br>You won <br>₹${rewardAmount}.00 🎉<br> <span class="hindi-text">मैंने बाबा साईं कृपा सोसायटी में सदस्य जोड़कर नकद इनाम जीता है। आप भी आज ही सदस्य जोड़ें और योजना का लाभ उठाएं। और पाएं ₹200 से ₹1100 जीतने का मौका।</span>`;
-            document.getElementById('modal').style.display = 'block';
+    document.getElementById('result').innerText = 'You won ₹' + reward;
+    document.getElementById('reward-amount').innerText = reward;
+    document.getElementById('result').classList.remove('hidden');
 
-            // Trigger confetti effect
-            launchConfetti();
-            
-            // Start fireworks after a short delay
-            setTimeout(() => launchFireworks(), 1000); // Delay for confetti to complete
-        }
+    // Show the modal
+    document.getElementById('modal').style.display = 'block';
 
-        function launchConfetti() {
-            confetti({
-                particleCount: 200,
-                spread: 70,
-                origin: { y: 0.6 }
-            });
-        }
+    // Trigger fireworks
+    var fireworks = new Fireworks(document.getElementById('fireworks-container'), {});
+    fireworks.start();
+}
 
-        function launchFireworks() {
-            const container = document.getElementById('fireworks-container');
-            const fireworks = new Fireworks(container, {
-                opacity: 0.9,
-                colors: ['#ff0000', '#00ff00', '#0000ff'],
-                sound: false
-            });
 
-            fireworks.start();
-            setTimeout(() => fireworks.stop(), 10000); // Fireworks for 10 seconds
-        }
-
-        // Close the modal
+        // Close modal
         document.getElementById('close').onclick = function() {
             document.getElementById('modal').style.display = 'none';
-        }
-        window.onclick = function(event) {
-            if (event.target === document.getElementById('modal')) {
-                document.getElementById('modal').style.display = 'none';
-            }
-        }
+        };
 
-        // Play background music
-        document.addEventListener('DOMContentLoaded', () => {
-            const backgroundMusic = document.getElementById('background-music');
+        // Share on WhatsApp
+        document.getElementById('shareWhatsApp').onclick = function() {
+            const rewardAmount = document.getElementById('reward-amount').innerText;
+            const shareText = `मैंने बाबा साईं कृपा सोसायटी में सदस्य जोड़कर ₹${rewardAmount} नकद इनाम जीता है। आप भी आज ही सदस्य जोड़ें और योजना का लाभ उठाएं। और पाएं ₹200 से ₹1100 जीतने का मौका #WinWithBSK`;
+            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
+            window.open(whatsappUrl, '_blank');
+        };
 
-            // Function to play background music
-            function playBackgroundMusic() {
-                backgroundMusic.play().catch(error => {
-                    console.error('Error playing the music:', error);
-                });
-            }
+        // Share on Facebook
+        document.getElementById('shareFacebook').onclick = function() {
+            const rewardAmount = document.getElementById('reward-amount').innerText;
+            const shareText = `I won ₹${rewardAmount} with Baba Sai Kripa Co-Operative (Urban) T&C Society! Share and get a chance to win up to ₹1100! #WinWithBSK`;
+            const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareText)}`;
+            window.open(facebookUrl, '_blank');
+        };
 
-            // Play music when the page loads
-            playBackgroundMusic();
-
-            // Optional: Add event listener to play music on button click
-            document.getElementById('clickButton').addEventListener('click', () => {
-                playBackgroundMusic();
-            });
-        });
-
-        function enableShareButton() {
-            const shareButton = document.getElementById('share-button');
-            shareButton.disabled = false;
-            shareButton.style.cursor = 'pointer'; // Change cursor to pointer
-            
-            // Show share options when clicked
-            shareButton.onclick = function() {
-                document.getElementById('share-options').style.display = 'block'; 
-            };
-
-            // WhatsApp share functionality
-            document.getElementById('whatsapp-share').onclick = function() {
-                const message = encodeURIComponent(`मैंने बाबा साईं कृपा सोसायटी में सदस्य जोड़कर ₹${rewardAmount} नकद इनाम जीता है। आप भी आज ही सदस्य जोड़ें और योजना का लाभ उठाएं। और पाएं ₹200 से ₹1100 जीतने का मौका।`);
-                const url = "https://wa.me/?text=" + message;
-                window.open(url, '_blank');
-            };
-
-            // Facebook share functionality
-            document.getElementById('facebook-share').onclick = function() {
-                const url = encodeURIComponent(window.location.href);
-                const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=मैंने बाबा साईं कृपा सोसायटी में सदस्य जोड़कर ₹${rewardAmount} नकद इनाम जीता है। आप भी आज ही सदस्य जोड़ें और योजना का लाभ उठाएं। और पाएं ₹200 से ₹1100 जीतने का मौका।`;
-                window.open(facebookUrl, '_blank');
-            };
-
-            // Twitter share functionality
-            document.getElementById('twitter-share').onclick = function() {
-                const text = encodeURIComponent(`मैंने बाबा साईं कृपा सोसायटी में सदस्य जोड़कर ₹${rewardAmount} नकद इनाम जीता है। आप भी आज ही सदस्य जोड़ें और योजना का लाभ उठाएं। और पाएं ₹200 से ₹1100 जीतने का मौका।`);
-                const twitterUrl = `https://twitter.com/intent/tweet?text=${text}`;
-                window.open(twitterUrl, '_blank');
-            };
-        }
+        // Share on Instagram
+        document.getElementById('shareInstagram').onclick = function() {
+            const rewardAmount = document.getElementById('reward-amount').innerText;
+            const shareText = `I won ₹${rewardAmount} with Baba Sai Kripa Co-Operative (Urban) T&C Society! Share and get a chance to win up to ₹1100! #WinWithBSK`;
+            navigator.clipboard.writeText(shareText).then(() => {
+                alert('Message copied to clipboard! Open Instagram and paste the message to share.');
+            }).catch(error => console.error('Error copying to clipboard:', error));
+        };
     </script>
 </body>
 </html>
