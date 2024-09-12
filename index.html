@@ -77,6 +77,7 @@
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@latest/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fireworks-js@latest/dist/fireworks.min.js"></script>
 </head>
 <body>
 
@@ -97,6 +98,9 @@
 
     <!-- Fireworks container -->
     <div id="fireworks-container"></div>
+
+    <!-- Background Music -->
+    <audio id="background-music" src="https://github.com/bskcs/Win-Prize/blob/main/Cheer.mp3?raw=true" preload="auto" loop></audio>
 
     <script>
         function generateReward() {
@@ -122,8 +126,11 @@
             document.getElementById('modal-text').innerText = `Congratulations! You won ₹${reward}! 🎉`;
             document.getElementById('modal').style.display = 'block';
 
-            // Fireworks effect
+            // Trigger confetti effect
             launchConfetti();
+            
+            // Start fireworks after a short delay
+            setTimeout(() => launchFireworks(), 1000); // Delay for confetti to complete
         }
 
         function launchConfetti() {
@@ -132,6 +139,18 @@
                 spread: 70,
                 origin: { y: 0.6 }
             });
+        }
+
+        function launchFireworks() {
+            const container = document.getElementById('fireworks-container');
+            const fireworks = new Fireworks(container, {
+                opacity: 0.9,
+                colors: ['#ff0000', '#00ff00', '#0000ff'],
+                sound: false
+            });
+
+            fireworks.start();
+            setTimeout(() => fireworks.stop(), 10000); // Fireworks for 10 seconds
         }
 
         // Close the modal
@@ -143,6 +162,26 @@
                 document.getElementById('modal').style.display = 'none';
             }
         }
+
+        // Play background music
+        document.addEventListener('DOMContentLoaded', () => {
+            const backgroundMusic = document.getElementById('background-music');
+
+            // Function to play background music
+            function playBackgroundMusic() {
+                backgroundMusic.play().catch(error => {
+                    console.error('Error playing the music:', error);
+                });
+            }
+
+            // Play music when the page loads
+            playBackgroundMusic();
+
+            // Optional: Add event listener to play music on button click
+            document.getElementById('clickButton').addEventListener('click', () => {
+                playBackgroundMusic();
+            });
+        });
     </script>
 
 </body>
