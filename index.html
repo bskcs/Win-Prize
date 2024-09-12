@@ -237,9 +237,9 @@
             <!-- Share button and options -->
             <button id="share-button" class="disabled" onclick="enableShareButton()">Share Your Win</button>
             <div id="share-options">
-                <button class="social-btn">Share on WhatsApp</button>
-                <button class="social-btn">Share on Facebook</button>
-                <button class="social-btn">Share on Twitter</button>
+                <button class="social-btn" id="whatsapp-share">Share on WhatsApp</button>
+                <button class="social-btn" id="facebook-share">Share on Facebook</button>
+                <button class="social-btn" id="twitter-share">Share on Twitter</button>
             </div>
         </div>
     </div>
@@ -251,28 +251,29 @@
     <audio id="background-music" src="https://github.com/bskcs/Win-Prize/blob/main/Cheer.mp3?raw=true" preload="auto" loop></audio>
 
     <script>
+        let rewardAmount = 0;
+
         function generateReward() {
             console.log("Button clicked"); // Debugging line
             // Disable button after first click
             document.getElementById('clickButton').disabled = true;
             
             // Random reward logic
-            let reward;
             let randomNum = Math.random();
             
             // 95-97% chance of getting a prize below 400
             if (randomNum <= 0.97) {
-                reward = Math.floor(Math.random() * 100) + 201; // Between 201 and 400
+                rewardAmount = Math.floor(Math.random() * 100) + 201; // Between 201 and 400
             } else {
-                reward = Math.floor(Math.random() * 800) + 401; // Between 401 and 1100
+                rewardAmount = Math.floor(Math.random() * 800) + 401; // Between 401 and 1100
             }
 
             // Display result
-            document.getElementById('result').innerHTML = `Congratulations! You won ₹${reward}.00 🎉`;
+            document.getElementById('result').innerHTML = `Congratulations! You won ₹${rewardAmount}.00 🎉`;
             document.getElementById('result').classList.remove('hidden');
 
             // Show modal with amount
-            document.getElementById('modal-text').innerHTML = `Congratulations! <br>You won <br>₹${reward}.00 🎉<br> <span class="hindi-text">मैंने बाबा साईं कृपा सोसायटी में सदस्य जोड़कर नकद इनाम जीता है। आप भी आज ही सदस्य जोड़ें और योजना का लाभ उठाएं। और पाएं ₹200 से ₹1100 जीतने का मौका।</span>`;
+            document.getElementById('modal-text').innerHTML = `Congratulations! <br>You won <br>₹${rewardAmount}.00 🎉<br> <span class="hindi-text">मैंने बाबा साईं कृपा सोसायटी में सदस्य जोड़कर नकद इनाम जीता है। आप भी आज ही सदस्य जोड़ें और योजना का लाभ उठाएं। और पाएं ₹200 से ₹1100 जीतने का मौका।</span>`;
             document.getElementById('modal').style.display = 'block';
 
             // Trigger confetti effect
@@ -343,22 +344,22 @@
             };
 
             // WhatsApp share functionality
-            document.querySelector('.social-btn:nth-child(1)').onclick = function() {
-                const message = encodeURIComponent("मैंने बाबा साईं कृपा सोसायटी में सदस्य जोड़कर नकद इनाम जीता है। आप भी आज ही सदस्य जोड़ें और योजना का लाभ उठाएं। और पाएं ₹200 से ₹1100 जीतने का मौका।");
+            document.getElementById('whatsapp-share').onclick = function() {
+                const message = encodeURIComponent(`मैंने बाबा साईं कृपा सोसायटी में सदस्य जोड़कर ₹${rewardAmount} नकद इनाम जीता है। आप भी आज ही सदस्य जोड़ें और योजना का लाभ उठाएं। और पाएं ₹200 से ₹1100 जीतने का मौका।`);
                 const url = "https://wa.me/?text=" + message;
                 window.open(url, '_blank');
             };
 
             // Facebook share functionality
-            document.querySelector('.social-btn:nth-child(2)').onclick = function() {
+            document.getElementById('facebook-share').onclick = function() {
                 const url = encodeURIComponent(window.location.href);
-                const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+                const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=मैंने बाबा साईं कृपा सोसायटी में सदस्य जोड़कर ₹${rewardAmount} नकद इनाम जीता है। आप भी आज ही सदस्य जोड़ें और योजना का लाभ उठाएं। और पाएं ₹200 से ₹1100 जीतने का मौका।`;
                 window.open(facebookUrl, '_blank');
             };
 
             // Twitter share functionality
-            document.querySelector('.social-btn:nth-child(3)').onclick = function() {
-                const text = encodeURIComponent("मैंने बाबा साईं कृपा सोसायटी में सदस्य जोड़कर नकद इनाम जीता है। आप भी आज ही सदस्य जोड़ें और योजना का लाभ उठाएं। और पाएं ₹200 से ₹1100 जीतने का मौका।");
+            document.getElementById('twitter-share').onclick = function() {
+                const text = encodeURIComponent(`मैंने बाबा साईं कृपा सोसायटी में सदस्य जोड़कर ₹${rewardAmount} नकद इनाम जीता है। आप भी आज ही सदस्य जोड़ें और योजना का लाभ उठाएं। और पाएं ₹200 से ₹1100 जीतने का मौका।`);
                 const twitterUrl = `https://twitter.com/intent/tweet?text=${text}`;
                 window.open(twitterUrl, '_blank');
             };
