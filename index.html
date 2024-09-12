@@ -112,6 +112,30 @@
             font-size: 1.2rem; /* Adjusted font size for Hindi text */
         }
 
+        /* Share options styles */
+        #share-options {
+            display: none; /* Hidden by default */
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #share-options button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            outline: none;
+        }
+
+        #share-options button.disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             #welcome {
@@ -210,6 +234,13 @@
                 Congratulations! <br>You won <br>₹{reward}.00 🎉<br>
                 <span class="hindi-text">मैंने बाबा साईं कृपा सोसायटी में सदस्य जोड़कर नकद इनाम जीता है। आप भी आज ही सदस्य जोड़ें और योजना का लाभ उठाएं। और पाएं ₹200 से ₹1100 जीतने का मौका।</span>
             </p>
+            <!-- Share button and options -->
+            <button id="share-button" class="disabled" onclick="enableShareButton()">Share Your Win</button>
+            <div id="share-options">
+                <button class="social-btn">Share on WhatsApp</button>
+                <button class="social-btn">Share on Facebook</button>
+                <button class="social-btn">Share on Twitter</button>
+            </div>
         </div>
     </div>
 
@@ -300,6 +331,38 @@
                 playBackgroundMusic();
             });
         });
+
+        function enableShareButton() {
+            const shareButton = document.getElementById('share-button');
+            shareButton.disabled = false;
+            shareButton.style.cursor = 'pointer'; // Change cursor to pointer
+            
+            // Show share options when clicked
+            shareButton.onclick = function() {
+                document.getElementById('share-options').style.display = 'block'; 
+            };
+
+            // WhatsApp share functionality
+            document.querySelector('.social-btn:nth-child(1)').onclick = function() {
+                const message = encodeURIComponent("मैंने बाबा साईं कृपा सोसायटी में सदस्य जोड़कर नकद इनाम जीता है। आप भी आज ही सदस्य जोड़ें और योजना का लाभ उठाएं। और पाएं ₹200 से ₹1100 जीतने का मौका।");
+                const url = "https://wa.me/?text=" + message;
+                window.open(url, '_blank');
+            };
+
+            // Facebook share functionality
+            document.querySelector('.social-btn:nth-child(2)').onclick = function() {
+                const url = encodeURIComponent(window.location.href);
+                const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+                window.open(facebookUrl, '_blank');
+            };
+
+            // Twitter share functionality
+            document.querySelector('.social-btn:nth-child(3)').onclick = function() {
+                const text = encodeURIComponent("मैंने बाबा साईं कृपा सोसायटी में सदस्य जोड़कर नकद इनाम जीता है। आप भी आज ही सदस्य जोड़ें और योजना का लाभ उठाएं। और पाएं ₹200 से ₹1100 जीतने का मौका।");
+                const twitterUrl = `https://twitter.com/intent/tweet?text=${text}`;
+                window.open(twitterUrl, '_blank');
+            };
+        }
     </script>
 </body>
 </html>
