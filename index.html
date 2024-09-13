@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Win with Baba Sai Kripa Co-Operative (Urban) T&C Society</title>
     <style>
-        /* Import Google Noto Sans font */
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap');
 
         body {
             text-align: center;
@@ -16,6 +15,42 @@
             padding: 0;
             height: 100vh;
             box-sizing: border-box;
+        }
+
+        /* Terms & Conditions styles */
+        #tc-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 100px auto;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        #agreeButton {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        /* Game section styles */
+        #game-section {
+            display: none;
+            text-align: center;
         }
 
         #logo {
@@ -35,7 +70,7 @@
             color: #210099;
         }
 
-        #clickButton {
+        #clickButton, #startGame {
             padding: 15px 30px;
             background-color: #28a745;
             color: white;
@@ -50,8 +85,8 @@
             margin-top: 10px;
         }
 
-        /* Modal Styles */
-        #modal, #terms-modal {
+        /* Popup styling */
+        #modal {
             display: none;
             position: fixed;
             z-index: 1000;
@@ -59,14 +94,14 @@
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
             background-color: rgba(0,0,0,0.4);
-                 
+            overflow: auto;
+        }
 
-        #modal-content, #terms-modal-content {
+        #modal-content {
             background-color: #fefefe;
             margin: 10% auto;
-            padding: 10px;
+            padding: 20px;
             border: 1px solid #888;
             width: 80%;
             max-width: 800px;
@@ -74,169 +109,201 @@
             text-align: center;
         }
 
-        #close, #terms-close {
+        #close {
             color: #aaa;
             float: right;
             font-size: 2rem;
             font-weight: bold;
         }
 
-        #close:hover, #close:focus, #terms-close:hover, #terms-close:focus {
+        #close:hover,
+        #close:focus {
             color: black;
             text-decoration: none;
             cursor: pointer;
         }
 
-        /* Fireworks container */
-        #fireworks-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
+        #modal-text {
+            font-size: 2rem;
+            font-family: 'Noto Sans Devanagari', sans-serif;
         }
 
-        /* Apply Noto Sans font to specific text elements */
+        #modal-text .reward {
+            font-size: 3.5rem;
+            color: red;
+        }
+
         .noto-sans {
             font-family: 'Noto Sans', sans-serif;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            #welcome { font-size: 2.5rem; }
-            #Yojna { font-size: 1.5rem; }
-            #clickButton { padding: 10px 20px; font-size: 1rem; }
-            #result { font-size: 2.5rem; }
-            #modal-content, #terms-modal-content { width: 90%; }
-            #close, #terms-close { font-size: 1.5rem; }
+        .share-buttons {
+            margin-top: 20px;
         }
 
-        @media (max-width: 480px) {
-            #welcome { font-size: 1.5rem; }
-            #Yojna { font-size: 1.2rem; }
-            #clickButton { padding: 8px 15px; font-size: 0.9rem; }
-            #result { font-size: 1.5rem; }
-            #modal-content, #terms-modal-content { width: 95%; }
-            #close, #terms-close { font-size: 1.2rem; }
+        .share-buttons a {
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .share-buttons img {
+            width: 40px;
+            height: 40px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            #welcome, #result {
+                font-size: 2.5rem;
+            }
+            #Yojna {
+                font-size: 1.5rem;
+            }
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@latest/dist/confetti.browser.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fireworks-js@latest/dist/fireworks.min.js"></script>
 </head>
 <body>
-    <!-- Terms and Conditions Modal -->
-    <div id="terms-modal">
-        <div id="terms-modal-content">
-            <span id="terms-close">&times;</span>
-            <h2>Terms & Conditions</h2>
-            <p>Please share this winning message on your social media platforms within the next 24 hours, take a screenshot, and then payment will be received via UPI.</p>
-            <button id="accept-terms">Accept & Start Game</button>
+
+    <!-- Terms & Conditions -->
+    <div id="tc-container">
+        <h1>नियम और शर्तें</h1>
+        <p>आगे बढ़ने के लिए, आपको निम्नलिखित से सहमत होना होगा:</p>
+        <ul style="text-align: left;">
+            <li>आपको इस संदेश को अपने सोशल मीडिया पर कम से कम अगले 24 घंटों के लिए साझा करना होगा.</li>
+            <li>सत्यापन के लिए आपको एक स्क्रीनशॉट साझा करना होगा।</li>
+            <li>सत्यापन के बाद भुगतान UPI के माध्यम से प्राप्त होगा।</li>
+            <li>इनाम प्राप्त करने के लिए कृपया अपने UPI विवरण साझा करें.</li>
+        </ul>
+        <button id="agreeButton">I Agree</button>
+    </div>
+
+    <!-- Game Section (Hidden initially) -->
+    <div id="game-section">
+        <div id="welcome"><b>Welcome to Baba Sai Kripa Co-Operative (Urban) T&C Society Limited!</b></div>
+        <img id="logo" src="https://github.com/bskcs/Win-Prize/blob/main/BSK%20LOGO.png?raw=true" alt="Baba Sai Kripa Logo">
+        <div id="Yojna"><b>सदस्य प्रोत्साहन योजना 2024 गणेश चतुर्थी से दीपावली तक</b></div>
+
+        <div class="noto-sans" style="padding: 5px; border: none; background-color: transparent; margin-top: 5px;">
+            <h2>प्रिय सदस्य, आपका धन्यवाद।</h2>
+            <p><b>आपने हमारी सोसाइटी में एक नया सदस्य जोड़ा है, इसके लिए हम आपके आभारी हैं। आपके लिए ₹200 से ₹1100 तक की प्रोत्साहन राशि तैयार है। इनाम पाने के लिए नीचे दिए गए बटन पर क्लिक करें।</b></p>
+            <p style="margin-top: 5px;">कृपया और सदस्य लाएं और हर सदस्य पर ₹200 से ₹1100 तक की प्रोत्साहन राशि पाएं।</p>
         </div>
-    </div>
 
-    <!-- Game Page Content -->
-    <div id="welcome"><b>Welcome to Baba Sai Kripa Co-Operative (Urban) T&C Society Limited!</b></div> 
-    <img id="logo" src="https://github.com/bskcs/Win-Prize/blob/main/BSK%20LOGO.png?raw=true" alt="Baba Sai Kripa Logo">
-    <div id="Yojna"><b>सदस्य प्रोत्साहन योजना 2024 गणेश चतुर्थी से दीपावली तक</b></div>
-    
-    <div class="noto-sans" style="padding: 5px; border: none; background-color: transparent; margin-top: 5px;">
-        <h2>प्रिय सदस्य, आपका धन्यवाद।</h2>
-        <p><b>आपने हमारी सोसाइटी में एक नया सदस्य जोड़ा है, इसके लिए हम आपके आभारी हैं। आपके लिए ₹200 से ₹1100 तक की प्रोत्साहन राशि तैयार है। इनाम पाने के लिए नीचे दिए गए बटन पर क्लिक करें।</b></p>
-        <p style="margin-top: 5px;">कृपया और सदस्य लाएं और हर सदस्य पर ₹200 से ₹1100 तक की प्रोत्साहन राशि पाएं।</p>
-    </div>
+        <!-- Name Input -->
+        <div id="name-section">
+            <label for="userName">Enter your name:</label>
+            <input type="text" id="userName" placeholder="Your Name">
+            <button id="startGame" onclick="startGame()">Start Game</button>
+        </div>
 
-    <button id="clickButton" onclick="generateReward()">Click Here to Win</button>
+        <div id="reward-section" style="display: none;">
+            <button id="clickButton" onclick="generateReward()">Click Here to Win</button>
+            <div id="result" class="hidden"></div>
+        </div>
 
-    <div id="result" class="hidden"></div>
-
-    <!-- Modal -->
-    <div id="modal">
-        <div id="modal-content">
-            <span id="close">&times;</span>
-            <div id="modal-text" class="noto-sans">
-                <h2>बधाई हो! आपने ₹<span id="reward-amount"></span> जीते हैं!</h2>
-                <h3>कृपया 24 घंटे के अंदर अपने सोशल मीडिया प्लेटफार्म पर यह जीत का संदेश साझा करें।</h3>
+        <!-- Modal for reward -->
+        <div id="modal">
+            <div id="modal-content">
+                <span id="close">&times;</span>
+                <p id="modal-text">
+                    Congratulations, <span id="userNameDisplay">{userName}</span>!<br>You won <span class="reward">₹{reward}.00</span> 🎉<br>
+                    <span class="hindi-text">मैंने बाबा साईं कृपा सोसायटी में सदस्य जोड़कर नकद इनाम जीता है। आप भी आज ही सदस्य जोड़ें और योजना का लाभ उठाएं। और पाएं ₹200 से ₹1100 जीतने का मौका।</span>
+                </p>
+                <div class="share-buttons">
+                    <a href="https://api.whatsapp.com/send?text=I%20just%20won%20₹{reward}%20with%20Baba%20Sai%20Kripa%20Co-Operative%20T&C%20Society!%20Join%20now%20and%20win%20too!" target="_blank" aria-label="Share on WhatsApp">
+                        <img src="https://github.com/bskcs/Win-Prize/blob/main/Whatsapp.png?raw=true" alt="Share on WhatsApp">
+                    </a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_URL_HERE" target="_blank" aria-label="Share on Facebook">
+                        <img src="https://github.com/bskcs/Win-Prize/blob/main/Facebook_Logo.png?raw=true" alt="Share on Facebook">
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank" aria-label="Share on Instagram">
+                        <img src="https://github.com/bskcs/Win-Prize/blob/main/Instagram_icon.png?raw=true" alt="Share on Instagram">
+                    </a>
+                </div>
             </div>
-            <button id="shareWhatsApp">Share on WhatsApp</button>
-            <button id="shareFacebook">Share on Facebook</button>
-            <button id="shareInstagram">Share on Instagram</button>
         </div>
     </div>
 
-    <!-- Fireworks container -->
-    <div id="fireworks-container"></div>
-
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script>
-	let clickCounter = 0; // Add a counter to keep track of clicks
-        // Show the Terms & Conditions modal first
-        document.getElementById('terms-modal').style.display = 'block';
+        // Show the game section only after the user agrees to T&C
+        document.getElementById('agreeButton').addEventListener('click', function() {
+            document.getElementById('tc-container').style.display = 'none';  // Hide T&C
+            document.getElementById('game-section').style.display = 'block';  // Show game section
+        });
 
-        // Close Terms & Conditions modal
-        document.getElementById('terms-close').onclick = function() {
-            document.getElementById('terms-modal').style.display = 'none';
-        };
+        // Start the game by validating and hiding the name input section
+        function startGame() {
+            const userName = document.getElementById('userName').value.trim();
+            if (userName) {
+                document.getElementById('name-section').style.display = 'none';
+                document.getElementById('reward-section').style.display = 'block';
+            } else {
+                alert('Please enter your name!');
+            }
+        }
 
-        // Accept Terms & Conditions and start the game
-        document.getElementById('accept-terms').onclick = function() {
-            document.getElementById('terms-modal').style.display = 'none';
-        };
-
+        // Reward generation function with distribution logic
         function generateReward() {
-    var min1 = 201, max1 = 501; // Range for 97% probability
-    var min2 = 502, max2 = 1100; // Range for 3% probability
-    var randomChance = Math.random() * 100; // Generates a number between 0 and 100
-    var reward;
+            document.getElementById('clickButton').disabled = true;
+            let reward;
 
-    // 97% chance to fall between ₹201 and ₹501
-    if (randomChance <= 97) {
-        reward = Math.floor(Math.random() * (max1 - min1 + 1)) + min1;
-    } else {
-        // 3% chance to fall between ₹502 and ₹1100
-        reward = Math.floor(Math.random() * (max2 - min2 + 1)) + min2;
-    }
+            // Generate a random number between 1 and 100 to determine the reward range
+            let randomPercentage = Math.random() * 100;
 
-    document.getElementById('result').innerText = 'You won ₹' + reward;
-    document.getElementById('reward-amount').innerText = reward;
-    document.getElementById('result').classList.remove('hidden');
+            if (randomPercentage < 82) { // 82% chance for ₹201 to ₹325
+                reward = Math.floor(Math.random() * (325 - 201 + 1)) + 201;
+            } else if (randomPercentage < 95) { // 15% chance for ₹326 to ₹500
+                reward = Math.floor(Math.random() * (500 - 326 + 1)) + 326;
+            } else { // 3% chance for ₹501 to ₹1100
+                reward = Math.floor(Math.random() * (1100 - 501 + 1)) + 501;
+            }
 
-    // Show the modal
-    document.getElementById('modal').style.display = 'block';
+            // Get the user name
+            const userName = document.getElementById('userName').value.trim();
 
-    // Trigger fireworks
-    var fireworks = new Fireworks(document.getElementById('fireworks-container'), {});
-    fireworks.start();
-}
+            // Update modal content
+            document.getElementById('modal-text').innerHTML = `Congratulations, <span id="userNameDisplay">${userName}</span>!<br>You won <span class="reward">₹${reward}.00</span> 🎉<br> <span class="hindi-text">मैंने बाबा साईं कृपा सोसायटी में सदस्य जोड़कर नकद इनाम जीता है। आप भी आज ही सदस्य जोड़ें और योजना का लाभ उठाएं। और पाएं ₹200 से ₹1100 जीतने का मौका।</span>`;
+            document.getElementById('modal').style.display = 'block';
 
+            // Play cheer sound
+            const cheerSound = new Audio('https://github.com/bskcs/Win-Prize/raw/main/Cheer.mp3'); // Correct path to your cheer sound file
+            cheerSound.loop = true;
 
-        // Close modal
+            cheerSound.oncanplaythrough = () => {
+                cheerSound.play();
+            };
+
+            cheerSound.onerror = (e) => {
+                console.error('Error loading audio:', e);
+            };
+
+            // Loop confetti animation
+            function startConfetti() {
+                window.confetti({
+                    particleCount: 200,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+                setTimeout(startConfetti, 1000); // Repeat every 1 second
+            }
+            startConfetti();
+        }
+
+        // Close modal and stop confetti and sound
         document.getElementById('close').onclick = function() {
             document.getElementById('modal').style.display = 'none';
+            cheerSound.pause(); // Stop the cheer sound
+            cheerSound.currentTime = 0; // Reset the sound to the start
         };
 
-        // Share on WhatsApp
-        document.getElementById('shareWhatsApp').onclick = function() {
-            const rewardAmount = document.getElementById('reward-amount').innerText;
-            const shareText = `मैंने बाबा साईं कृपा सोसायटी में सदस्य जोड़कर ₹${rewardAmount} नकद इनाम जीता है। आप भी आज ही सदस्य जोड़ें और योजना का लाभ उठाएं। और पाएं ₹200 से ₹1100 जीतने का मौका #WinWithBSK`;
-            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
-            window.open(whatsappUrl, '_blank');
-        };
-
-        // Share on Facebook
-        document.getElementById('shareFacebook').onclick = function() {
-            const rewardAmount = document.getElementById('reward-amount').innerText;
-            const shareText = `I won ₹${rewardAmount} with Baba Sai Kripa Co-Operative (Urban) T&C Society! Share and get a chance to win up to ₹1100! #WinWithBSK`;
-            const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareText)}`;
-            window.open(facebookUrl, '_blank');
-        };
-
-        // Share on Instagram
-        document.getElementById('shareInstagram').onclick = function() {
-            const rewardAmount = document.getElementById('reward-amount').innerText;
-            const shareText = `I won ₹${rewardAmount} with Baba Sai Kripa Co-Operative (Urban) T&C Society! Share and get a chance to win up to ₹1100! #WinWithBSK`;
-            navigator.clipboard.writeText(shareText).then(() => {
-                alert('Message copied to clipboard! Open Instagram and paste the message to share.');
-            }).catch(error => console.error('Error copying to clipboard:', error));
+        // Close modal if clicked outside of the modal content
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('modal')) {
+                document.getElementById('modal').style.display = 'none';
+                cheerSound.pause(); // Stop the cheer sound
+                cheerSound.currentTime = 0; // Reset the sound to the start
+            }
         };
     </script>
 </body>
