@@ -209,16 +209,16 @@
                 <span id="close">&times;</span>
                 <p id="modal-text">
                     Congratulations, <span id="userNameDisplay">{userName}</span>!<br>You won <span class="reward">₹{reward}.00</span> 🎉<br>
-                    <span class="hindi-text">मैंने बाबा साईं कृपा सोसायटी में सदस्य जोड़कर नकद इनाम जीता है। आप भी आज ही सदस्य जोड़ें और योजना का लाभ उठाएं। और पाएं ₹200 से ₹1100 जीतने का मौका।</span>
+                    <span class="hindi-text">मैंने <span id="userNameDisplay">{userName}</span> ने बाबा साईं कृपा सोसायटी में सदस्य जोड़कर नकद इनाम जीता है। आप भी आज ही सदस्य जोड़ें और योजना का लाभ उठाएं। और पाएं ₹200 से ₹1100 जीतने का मौका।</span>
                 </p>
                 <div class="share-buttons">
-                    <a href="https://api.whatsapp.com/send?text=I%20just%20won%20₹{reward}%20with%20Baba%20Sai%20Kripa%20Co-Operative%20T&C%20Society!%20Join%20now%20and%20win%20too!" target="_blank" aria-label="Share on WhatsApp">
+                    <a id="whatsapp-share" href="#" target="_blank" aria-label="Share on WhatsApp">
                         <img src="https://github.com/bskcs/Win-Prize/blob/main/Whatsapp.png?raw=true" alt="Share on WhatsApp">
                     </a>
-                    <a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_URL_HERE" target="_blank" aria-label="Share on Facebook">
+                    <a id="facebook-share" href="https://www.facebook.com/sharer/sharer.php?u=YOUR_URL_HERE" target="_blank" aria-label="Share on Facebook">
                         <img src="https://github.com/bskcs/Win-Prize/blob/main/Facebook_Logo.png?raw=true" alt="Share on Facebook">
                     </a>
-                    <a href="https://www.instagram.com/" target="_blank" aria-label="Share on Instagram">
+                    <a id="instagram-share" href="https://www.instagram.com/" target="_blank" aria-label="Share on Instagram">
                         <img src="https://github.com/bskcs/Win-Prize/blob/main/Instagram_icon.png?raw=true" alt="Share on Instagram">
                     </a>
                 </div>
@@ -266,6 +266,12 @@
 
             // Update modal content
             document.getElementById('modal-text').innerHTML = `Congratulations, <span id="userNameDisplay">${userName}</span>!<br>You won <span class="reward">₹${reward}.00</span> 🎉<br> <span class="hindi-text">मैंने बाबा साईं कृपा सोसायटी में सदस्य जोड़कर नकद इनाम जीता है। आप भी आज ही सदस्य जोड़ें और योजना का लाभ उठाएं। और पाएं ₹200 से ₹1100 जीतने का मौका।</span>`;
+            
+            // Update share links
+            document.getElementById('whatsapp-share').href = `https://api.whatsapp.com/send?text=मैंने ${userName} ने बाबा साईं कृपा सोसायटी में सदस्य जोड़कर ₹${reward}.00 का नकद इनाम जीता है। आप भी आज ही सदस्य जोड़ें और योजना का लाभ उठाएं। और पाएं ₹200 से ₹1100 जीतने का मौका।`;
+            document.getElementById('facebook-share').href = `https://www.facebook.com/sharer/sharer.php?u=YOUR_URL_HERE&quote=मैंने ${userName} ने बाबा साईं कृपा सोसायटी में सदस्य जोड़कर ₹${reward}.00 का नकद इनाम जीता है। आप भी आज ही सदस्य जोड़ें और योजना का लाभ उठाएं। और पाएं ₹200 से ₹1100 जीतने का मौका।`;
+            document.getElementById('instagram-share').href = `https://www.instagram.com/`; // Instagram doesn’t support direct sharing links with text. Use Instagram app for sharing.
+
             document.getElementById('modal').style.display = 'block';
 
             // Play cheer sound
